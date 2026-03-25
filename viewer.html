@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="viewer-page">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D 模型详情</title>
+    <link rel="stylesheet" href="models.css" />
+</head>
+<body class="viewer-page">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="models.html" class="back-link">← 返回模型列表</a>
+            <div>
+                <h1 class="site-title">3D 模型详情</h1>
+                <p class="site-subtitle">支持旋转、缩放、拖拽查看</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="viewer-layout container">
+        <section class="viewer-panel">
+            <div id="viewerContainer" class="viewer-canvas-wrap">
+                <div class="viewer-loading" id="loadingHint">正在加载 3D 模型，请稍候...</div>
+                <canvas id="viewerCanvas"></canvas>
+            </div>
+        </section>
+
+        <aside class="viewer-sidebar">
+            <h2 id="modelTitle">模型信息</h2>
+            <!-- <p id="modelDesc">从 URL 中自动读取模型文件路径，你可以在论文中直接粘贴该详情页链接。</p> -->
+
+            <div class="viewer-controls">
+                <h3>操作说明</h3>
+                <ul>
+                    <li>鼠标左键拖拽：旋转视角</li>
+                    <li>鼠标滚轮：缩放远近</li>
+                    <li>鼠标右键拖拽：平移视图</li>
+                    <li>双击空白处：重置视角</li>
+                </ul>
+            </div>
+
+            <div class="link-block">
+                <!-- <h3>当前页面链接</h3> -->
+                <!-- <p>你可以复制浏览器地址栏中的链接，直接放入论文或发给导师查看。</p> -->
+            </div>
+        </aside>
+    </main>
+
+    <!-- Three.js 及扩展（CDN） -->
+    <script src="https://unpkg.com/three@0.146.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.146.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/three@0.146.0/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script src="viewer.js"></script>
+</body>
+</html>
+
