@@ -1,0 +1,301 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #222;
+    background: #f5f7fb;
+}
+
+/* viewer.html 全屏与字体放大（仅在 viewer 页面生效） */
+html.viewer-page {
+    font-size: 18px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.site-header {
+    background: linear-gradient(135deg, #1c4fa5, #5c8df6);
+    color: #fff;
+    padding: 16px 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.site-title {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.site-subtitle {
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.back-link {
+    color: #e3ebff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 24px 0 32px;
+}
+
+/* 全屏展示（仅影响 viewer.html 的布局结构） */
+body.viewer-page {
+    overflow: hidden;
+}
+
+body.viewer-page header.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+}
+
+body.viewer-page main.viewer-layout.container {
+    position: fixed;
+    top: 72px; /* 适配 .site-header 的高度，必要时你可以告诉我再微调 */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: none;
+    padding: 0;
+    height: calc(100vh - 72px);
+    gap: 0;
+    align-items: stretch;
+    grid-template-columns: minmax(0, 3.2fr) minmax(0, 0.95fr);
+}
+
+/* 让左侧画布铺满高度 */
+body.viewer-page .viewer-panel {
+    height: 100%;
+    min-height: 0;
+}
+
+body.viewer-page .viewer-canvas-wrap {
+    height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* 明确把 id 容器高度设为 100%，避免百分比高度在某些情况下计算为 0 */
+body.viewer-page #viewerContainer {
+    height: 100%;
+}
+
+body.viewer-page #viewerCanvas {
+    height: 100%;
+}
+
+/* 右侧信息栏高度也铺满 */
+body.viewer-page .viewer-sidebar {
+    height: 100%;
+    overflow: auto;
+    border-radius: 0;
+}
+
+.intro h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+
+.intro p {
+    margin-top: 8px;
+    color: #555;
+}
+
+.models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.model-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+
+.model-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.15);
+}
+
+.thumb {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 30% 20%, #fef9c3, #bfdbfe);
+    color: #1e293b;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.thumb-placeholder {
+    background: linear-gradient(135deg, #e0f2fe, #fef3c7);
+}
+
+.model-info {
+    padding: 12px 14px 14px;
+}
+
+.model-title {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+}
+
+.model-desc {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.site-footer {
+    border-top: 1px solid #e2e8f0;
+    padding: 12px 0 16px;
+    font-size: 0.8rem;
+    color: #6b7280;
+    background: #f8fafc;
+    text-align: center;
+}
+
+/* 详情页布局 */
+.viewer-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.3fr);
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.viewer-panel {
+    min-height: 560px;
+}
+
+.viewer-canvas-wrap {
+    position: relative;
+    background: radial-gradient(circle at 20% 20%, #f9fafb, #e5e7eb);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+}
+
+#viewerCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.viewer-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(148, 163, 184, 0.5));
+    color: #111827;
+    font-size: 0.95rem;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.viewer-sidebar {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 16px 16px 18px;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+}
+
+.viewer-sidebar h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.viewer-sidebar p {
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.viewer-controls h3,
+.link-block h3 {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.viewer-controls ul {
+    padding-left: 18px;
+    margin: 0;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+.viewer-controls li + li {
+    margin-top: 4px;
+}
+
+.link-block p {
+    margin: 0;
+    font-size: 0.88rem;
+}
+
+@media (max-width: 800px) {
+    .viewer-layout {
+        grid-template-columns: 1fr;
+    }
+
+    #viewerCanvas {
+        height: 100%;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* 全屏覆盖（放在末尾，确保优先级） */
+body.viewer-page .viewer-panel {
+    min-height: 0;
+}
+
+body.viewer-page .viewer-canvas-wrap {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+body.viewer-page .viewer-sidebar {
+    border-radius: 0;
+    box-shadow: none;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D 模型展示 - 首页</title>
+    <link rel="stylesheet" href="models.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <h1 class="site-title">3D 模型展示</h1>
+            <p class="site-subtitle">教师素养要素模型</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>模型列表</h2>
+            <p>点击下方任意模型卡片进入详情页，可进行 360° 旋转、缩放与视角查看。</p>
+        </section>
+
+        <!--
+            使用说明：
+            1. 每一个 .model-card 代表一个模型。
+            2. href 中的 model 参数指向实际的 .glb / .gltf / .obj 文件路径，例如：models/model1.glb
+            3. 你导出新模型后，只需要：
+               - 把模型文件放入 models/ 目录
+               - 在这里复制一张卡片，修改名称与 href 中的文件名
+        -->
+        <section class="models-grid" id="modelsGrid">
+            <!-- 按 model-desc 中“图4.x”的 x 从小到大排序；重复（如图4.5）保持原顺序 -->
+            <a class="model-card" href="viewer.html?model=models/model10.glb">
+                <div class="thumb thumb-placeholder">模型 1 预览</div>
+                <div class="model-info">
+                    <h3 class="model-title">教师（二级）子系统结构的三维模型（图4.3）</h3>
+                    <p class="model-desc">（图4.3）</p>
+                </div>
+            </a>
+
+            <a class="model-card" href="viewer.html?model=models/model1.glb">
+                <div class="thumb thumb-placeholder">模型 2 预览</div>
+                <div class="model-info">
+                    <h3 class="model-title">学生（二级）子系统结构的三维模型</h3>
+                    <p class="model-desc">（图4.5）</p>
+                </div>
+            </a>
+           
+
+            <a class="model-card" href="viewer.html?model=models/model7.glb">
+                <div class="thumb thumb-placeholder">模型 3 预览</div>
+                <div class="model-info">
+                    <h3 class="model-title">教学主体（一级）子系统结构的三维模型</h3>
+                    <p class="model-desc">（图4.7）</p>
+                </div>
+            </a>
+
+            <a class="model-card" href="viewer.html?model=models/model4.glb">
+                <div class="thumb thumb-placeholder">模型 4 预览</div>
+                <div class="model-info">
+                    <h3 class="model-title">教学客体（一级）子系统结构的三维模型</h3>
+                    <p class="model-desc">（图4.10）</p>
+                </div>
+            </a>
+
+            <a class="model-card" href="viewer.html?model=models/model6.glb">
+                <div class="thumb thumb-placeholder">模型 5 预览</div>
+                <div class="model-info">
+                    <h3 class="model-title">教学媒体（一级）子系统结构的三维模型</h3>
+                    <p class="model-desc">（图4.13）</p>
+                </div>
+            </a>
+
+            <a class="model-card" href="viewer.html?model=models/model5.glb">
+                <div class="thumb thumb-placeholder">模型 6 预览</div>
+                <div class="model-info">
+                    <h3 class="model-title">教学控制（一级）子系统结构的三维模型</h3>
+                    <p class="model-desc">（图4.16）</p>
+                </div>
+            </a>
+
+            <a class="model-card" href="viewer.html?model=models/model8.glb">
+                <div class="thumb thumb-placeholder">模型 7 预览</div>
+                <div class="model-info">
+                    <h3 class="model-title">教学主体、教学客体、教学媒体和教学控制之间相互作用的三维模型</h3>
+                    <p class="model-desc">（图4.18）</p>
+                </div>
+            </a>
+
+            <a class="model-card" href="viewer.html?model=models/model9.glb">
+                <div class="thumb thumb-placeholder">模型 8 预览</div>
+                <div class="model-info">
+                    <h3 class="model-title">外在环境中要素结构的三维模型</h3>
+                    <p class="model-desc">（图4.20）</p>
+                </div>
+            </a>
+
+            <a class="model-card" href="viewer.html?model=models/model2.glb">
+                <div class="thumb thumb-placeholder">模型 9 预览</div>
+                <div class="model-info">
+                    <h3 class="model-title">初中课堂乐器合奏教学系统优化模型</h3>
+                    <p class="model-desc">（图4.22-4.27）</p>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© 2026 3D 模型展示 · 用于毕业论文成果展示</small>
+        </div>
+    </footer>
+</body>
+</html>
+
