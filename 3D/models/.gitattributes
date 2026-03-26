@@ -1,2 +1,0 @@
-model2.glb filter=lfs diff=lfs merge=lfs -text
-model8.glb filter=lfs diff=lfs merge=lfs -text
